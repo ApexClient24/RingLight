@@ -29,15 +29,26 @@ struct ContentView: View {
                 Slider(value: $controller.intensity, in: 0.1...1)
             }
 
-            parameterSection(title: "Softness", valueLabel: String(format: "%.0f%%", controller.feather * 100)) {
-                Slider(value: $controller.feather, in: 0...0.9)
-            }
+//            parameterSection(title: "Softness", valueLabel: String(format: "%.0f%%", controller.feather * 100)) {
+//                Slider(value: $controller.feather, in: 0...0.9)
+//            }
 
             parameterSection(title: "Color temperature", valueLabel: "\(Int(controller.temperature))K") {
                 Slider(value: $controller.temperature, in: 2800...7000, step: 50)
             }
 
             TemperaturePresetRow(controller: controller)
+
+            Divider()
+
+            Button {
+                NSApplication.shared.terminate(nil)
+            } label: {
+                Text("Quit RingLight")
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.plain)
+            .foregroundColor(.secondary)
         }
         .padding(16)
         .frame(width: 360)

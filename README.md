@@ -19,5 +19,5 @@ RingLight provides an adjustable circular ring overlay that can be used as a vis
 
 ---
 
-Built by Aayush Pokharel
+Built by Aayush, Maintained by **AI**
 [apps.aayush.art](https://apps.aayush.art)

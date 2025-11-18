@@ -3,6 +3,15 @@ import Dependencies
 import Sharing
 import SwiftUI
 
+// MARK: - Display Info
+
+struct DisplayInfo: Identifiable, Hashable {
+    let id: UInt32
+    let name: String
+    
+    static let allDisplays = DisplayInfo(id: 0, name: "All Displays")
+}
+
 // MARK: - Ring Light Controller
 
 @MainActor
@@ -43,6 +52,11 @@ final class RingLightController {
         didSet { pushUpdate() }
     }
 
+    @ObservationIgnored
+    @Shared(.ringLightSelectedDisplayID) var selectedDisplayID: UInt32 = 0 {
+        didSet { pushUpdate() }
+    }
+
     var previewColor: Color {
         configuration.swiftUIColor
     }
@@ -59,6 +73,21 @@ final class RingLightController {
         $temperature.withLock { $0 = kelvin }
     }
 
+    func availableDisplays() -> [DisplayInfo] {
+        @Dependency(\.screenClient) var screenClient
+        var displays = [DisplayInfo.allDisplays]
+        
+        let screens = screenClient.screens()
+        for (index, screen) in screens.enumerated() {
+            if let identifier = ScreenIdentifier(screen: screen) {
+                let name = screen.localizedName.isEmpty ? "Display \(index + 1)" : screen.localizedName
+                displays.append(DisplayInfo(id: identifier.rawValue, name: name))
+            }
+        }
+        
+        return displays
+    }
+
     private var configuration: RingLightConfiguration {
         RingLightConfiguration(
             width: CGFloat(clamp(width, min: 20, max: 400)),
@@ -71,6 +100,6 @@ final class RingLightController {
     }
 
     private func pushUpdate() {
-        engine.update(isEnabled: isEnabled, configuration: configuration)
+        engine.update(isEnabled: isEnabled, configuration: configuration, selectedDisplayID: selectedDisplayID)
     }
 }

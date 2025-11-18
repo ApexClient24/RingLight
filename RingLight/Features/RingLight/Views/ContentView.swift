@@ -17,6 +17,8 @@ struct ContentView: View {
 
             Divider()
 
+            displayPickerSection
+
             parameterSection(title: "Ring width", valueLabel: "\(Int(controller.width))") {
                 Slider(value: $controller.width, in: 40...400, step: 5)
             }
@@ -83,6 +85,23 @@ struct ContentView: View {
             Text("Professional lighting for video calls and recordings.")
                 .font(.callout)
                 .foregroundStyle(.secondary)
+        }
+    }
+
+    private var displayPickerSection: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("DISPLAY")
+                .font(.caption)
+                .fontWeight(.semibold)
+                .foregroundStyle(.secondary)
+            
+            Picker("Display", selection: $controller.selectedDisplayID) {
+                ForEach(controller.availableDisplays()) { display in
+                    Text(display.name).tag(display.id)
+                }
+            }
+            .pickerStyle(.menu)
+            .labelsHidden()
         }
     }
 

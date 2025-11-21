@@ -161,9 +161,9 @@ final class GlowGradientView: NSView {
 
         topGradient.frame = CGRect(
             x: 0,
-            y: bounds.height - effectiveTopInset,
+            y: bounds.height - effectiveTopInset - targetWidth,
             width: bounds.width,
-            height: max(0, targetWidth)
+            height: min(targetWidth, availableHeight)
         )
         bottomGradient.frame = CGRect(x: 0, y: 0, width: bounds.width, height: targetWidth)
         leftGradient.frame = CGRect(x: 0, y: 0, width: targetWidth, height: availableHeight)

